@@ -1,11 +1,11 @@
+import { TRegister } from "@/@type/auth";
 import InputForm from "@/components/Form/InputForm";
-import React from "react";
+import { useRegister } from "@/hooks/useAuth";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@nextui-org/react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useRegister } from "@/hooks/useAuth";
 const schema = z
   .object({
     username: z.string().min(5, "Tên đăng nhập phải có ít nhất 6 ký tự"),
@@ -33,7 +33,7 @@ export default function Register() {
   });
   const { mutate: registerMutation, isLoading } = useRegister();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: TRegister) => {
     registerMutation(data);
   };
   return (

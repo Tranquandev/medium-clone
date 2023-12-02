@@ -1,12 +1,11 @@
-import InputForm from "@/components/Form/InputForm";
-import React from "react";
-import { Button } from "@nextui-org/react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useLogin } from "@/hooks/useAuth";
 import { TLogin } from "@/@type/auth";
+import InputForm from "@/components/Form/InputForm";
+import { useLogin } from "@/hooks/useAuth";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@nextui-org/react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { z } from "zod";
 
 const schema = z.object({
   email: z.string().email("Email không hợp lệ"),

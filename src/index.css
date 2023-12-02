@@ -1,3 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 @tailwind base;
+@layer base {
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+}
 @tailwind components;
 @tailwind utilities;
+
+.is-loading {
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s loading linear infinite;
+}
+@keyframes loading {
+  to {
+    background-position-x: -200%;
+  }
+}

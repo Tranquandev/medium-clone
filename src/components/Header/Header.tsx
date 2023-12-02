@@ -15,8 +15,8 @@ export default function Header({ isLoading, userData }: HeaderProps) {
     onSignOut();
   };
   return (
-    <div className="px-4 shadow-md border-b-1">
-      <div className="flex justify-between py-4 max-w-[1920px] mx-auto">
+    <div className="shadow-md border-b-1">
+      <div className="flex justify-between py-4 container-fluid">
         <div className="flex items-center">
           <Link to="/" className="text-xl font-bold">
             <span className="text-green-500">M</span>

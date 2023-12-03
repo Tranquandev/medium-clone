@@ -10,4 +10,5 @@ export type TPost = {
   slug: string;
   tags: TTag[];
   title: string;
+  featuredImage: string;
 };

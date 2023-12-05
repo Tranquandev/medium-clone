@@ -38,9 +38,12 @@ export default function Header({ isLoading, userData }: HeaderProps) {
                   {userData.username}
                   {isShow && (
                     <div className="absolute top-[100%] right-0 min-w-[200px] p-2 shadow-md border-1 rounded-md bg-white">
-                      <div className="px-4 py-2 transition-all rounded-md hover:bg-gray-300">
-                        Thông tin
-                      </div>
+                      <Link
+                        to="/posts/create"
+                        className="block px-4 py-2 transition-all rounded-md hover:bg-gray-300"
+                      >
+                        Tạo bài viết
+                      </Link>
                       <div
                         className="px-4 py-2 transition-all rounded-md hover:bg-gray-300"
                         onClick={handleLogout}

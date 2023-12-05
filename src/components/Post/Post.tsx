@@ -19,7 +19,7 @@ export default function Post({ post }: PostProps) {
         <p>{post?.author.username}</p>
         <span>·</span>
         <span className="italic text-gray-400">
-          {formattedDate("2023-11-28T14:10:44.393Z")}
+          {formattedDate(post?.createdAt as string)}
         </span>
       </div>
 
@@ -29,7 +29,7 @@ export default function Post({ post }: PostProps) {
       <p className="text-gray-600">
         <Link to={`posts/${post?.slug}`}>{post?.description}</Link>
       </p>
-      <div className="flex items-center text-xs gap-x-4">
+      <div className="flex flex-wrap items-center gap-2 text-xs">
         {post?.tags.map((tag) => (
           <span className="p-2 bg-gray-300 rounded-2xl" key={tag.id}>
             {tag.name}

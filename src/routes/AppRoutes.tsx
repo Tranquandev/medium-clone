@@ -1,5 +1,6 @@
 import MainLayout from "@/layouts/MainLayout";
 import Home from "@/pages/Home";
+import PostCreate from "@/pages/PostCreate";
 import PostDetail from "@/pages/PostDetail";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/posts/:slug",
         element: <PostDetail />,
+      },
+      {
+        path: "/posts/:slug",
+        element: <PostDetail />,
+      },
+      {
+        path: "/posts/create",
+        element: <PostCreate />,
       },
     ],
   },

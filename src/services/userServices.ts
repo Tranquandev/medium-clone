@@ -1,11 +1,6 @@
 import http from "@/libs/http";
 
 export const getMeService = async () => {
-  if (!localStorage.getItem("accessToken")) return null;
-  const response = await http.get("/users/me", {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
+  const response = await http.get("/users/me");
   return response.data;
 };

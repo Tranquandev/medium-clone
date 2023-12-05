@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 export default function TanstackQuery({
   children,
 }: {
@@ -13,12 +14,15 @@ export default function TanstackQuery({
           refetchOnMount: false,
           refetchOnReconnect: false,
           retry: 1,
-          staleTime: 30 * 1000,
+          // staleTime: 0,
         },
       },
     })
   );
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }

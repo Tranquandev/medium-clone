@@ -12,3 +12,9 @@ export type TPost = {
   title: string;
   featuredImage: string;
 };
+export type TPostCreate = {
+  title: string;
+  description: string;
+  content: string;
+  tagIds?: string[];
+};

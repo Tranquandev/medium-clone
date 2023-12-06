@@ -39,7 +39,10 @@ export const useCreatePost = () => {
   return useMutation((data: TPostCreate) => createPostService(data), {
     onSuccess: (data) => {
       console.log("create post", data);
-      queryClient.invalidateQueries("GET_ALL_POST");
+      queryClient.invalidateQueries("GET_ALL_POST", {
+        // refetchActive: true,
+        refetchInactive: true,
+      });
     },
     onError: () => {},
   });

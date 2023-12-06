@@ -15,7 +15,6 @@ export default function Home() {
     );
   return (
     <div className="container ">
-      {/* <button onClick={inva}>abnc</button> */}
       <div className="mt-10 space-y-10">
         {data?.posts &&
           data.posts.length > 0 &&

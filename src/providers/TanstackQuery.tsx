@@ -14,7 +14,7 @@ export default function TanstackQuery({
           refetchOnMount: false,
           refetchOnReconnect: false,
           retry: 1,
-          // staleTime: 0,
+          staleTime: 30 * 1000,
         },
       },
     })

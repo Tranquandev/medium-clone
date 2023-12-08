@@ -1,4 +1,5 @@
 import { TTag } from "@/@type/tag";
+import TextEditor from "@/components/TextEditor";
 import { useCreatePost } from "@/hooks/usePost";
 import { useGetAllTags } from "@/hooks/useTag";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,12 +12,20 @@ import { z } from "zod";
 const schema = z.object({
   title: z.string().min(2, "Tiêu đề phải có ít nhất 5 ký tự"),
   description: z.string().min(2, "Mô tả phải có ít nhất 5 ký tự"),
-  text: z.string().min(2, "Nội dung phải có ít nhất 5 ký tự"),
 });
 
 export default function PostCreate() {
   const navigate = useNavigate();
   const [tags, setTags] = useState<{ value: string; label: string }[]>([]);
+  const [textHTML, setTextHTML] = useState("");
+  console.log(
+    "🚀 ~ file: PostCreate.tsx:21 ~ PostCreate ~ textHTML:",
+    textHTML
+  );
+  const handleTextEditorChange = (value) => {
+    setTextHTML(value);
+  };
+
   const { data: tagList } = useGetAllTags();
   const {
     register,
@@ -26,7 +35,6 @@ export default function PostCreate() {
     defaultValues: {
       title: "",
       description: "",
-      text: "",
     },
     resolver: zodResolver(schema),
   });
@@ -35,6 +43,7 @@ export default function PostCreate() {
     createPostMutation(
       {
         ...data,
+        html: textHTML,
         tagIds: tags.map((tag) => tag.value),
       },
       {
@@ -50,10 +59,10 @@ export default function PostCreate() {
     setTags(data);
   };
   return (
-    <div className="container">
+    <div className="container pb-10">
       <h1 className="my-10 text-2xl font-bold text-center">Tạo mới bài viết</h1>
       <div className="flex flex-col items-center justify-center">
-        <div className="w-full max-w-[600px]">
+        <div className="w-full ">
           <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-8">
               <div className="space-y-2">
@@ -98,7 +107,11 @@ export default function PostCreate() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Nội dung</label>
-                <textarea
+                <TextEditor
+                  onTextEditorChange={handleTextEditorChange}
+                  value={textHTML}
+                />
+                {/* <textarea
                   className={`w-full px-4 py-2 border border-gray-300 rounded-md outline-none  ${
                     errors.title?.message ? "border-red-500" : ""
                   }`}
@@ -107,7 +120,7 @@ export default function PostCreate() {
                 ></textarea>
                 <span className="text-xs text-red-500">
                   {errors.text?.message}
-                </span>
+                </span> */}
                 {/* <InputForm
                   name="text"
                   control={control}
@@ -115,6 +128,7 @@ export default function PostCreate() {
                   errorMessage={errors.text?.message}
                 /> */}
               </div>
+
               <div className="space-y-2">
                 <label className="text-sm font-medium">Tags</label>
                 <Select

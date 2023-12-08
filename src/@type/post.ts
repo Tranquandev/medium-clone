@@ -6,6 +6,8 @@ export type TPost = {
   bookmarks: [];
   createdAt: string;
   description: string;
+  html: string;
+  text: string;
   id: string;
   slug: string;
   tags: TTag[];
@@ -15,6 +17,7 @@ export type TPost = {
 export type TPostCreate = {
   title: string;
   description: string;
-  content: string;
+  html?: string;
+  text?: string;
   tagIds?: string[];
 };

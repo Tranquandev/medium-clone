@@ -2,7 +2,7 @@ import { formattedDate } from "@/helper/formattedDate";
 import { getRandomReadTime } from "@/helper/randomReadTime";
 import { useGetPostBySlug } from "@/hooks/usePost";
 import { useParams } from "react-router-dom";
-
+import parse from "html-react-parser";
 export default function PostDetail() {
   const { slug } = useParams();
   const { data } = useGetPostBySlug(slug);
@@ -31,11 +31,10 @@ export default function PostDetail() {
         alt=""
         className="w-full h-[400px] object-cover rounded-md"
       />
-      <p>{data?.description}</p>
-      <div
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: data?.text || "" }}
-      ></div>
+
+      <div className="prose max-w-none">
+        {data?.html ? parse(data?.html) : data?.text}
+      </div>
     </div>
   );
 }

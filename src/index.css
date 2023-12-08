@@ -29,3 +29,6 @@
     background-position-x: -200%;
   }
 }
+.quill .ql-editor {
+  min-height: 400px;
+}

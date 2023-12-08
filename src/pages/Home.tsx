@@ -5,8 +5,6 @@ import { useGetAllPost } from "@/hooks/usePost";
 
 export default function Home() {
   const { data, isLoading } = useGetAllPost();
-  console.log(data);
-
   if (isLoading)
     return (
       <div className="container">

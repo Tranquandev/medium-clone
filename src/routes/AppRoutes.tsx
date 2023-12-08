@@ -4,6 +4,7 @@ import PostCreate from "@/pages/PostCreate";
 import PostDetail from "@/pages/PostDetail";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
+import AnonymousRoutes from "@/routes/AnonymousRoutes";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -16,14 +17,6 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
         path: "/posts/:slug",
         element: <PostDetail />,
       },
@@ -34,6 +27,20 @@ const router = createBrowserRouter([
       {
         path: "/posts/create",
         element: <PostCreate />,
+      },
+      {
+        path: "/",
+        element: <AnonymousRoutes />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/register",
+            element: <Register />,
+          },
+        ],
       },
     ],
   },
